@@ -1,0 +1,208 @@
+@keyframes showSelectable {
+  0% {
+    background-color: rgba(255, 234, 6, 0.308);
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+#theDocument {
+  position: relative;
+  overflow-y: scroll;
+  height: 100vh;
+  padding-bottom: 30px;
+}
+
+.imgContainer input {
+  visibility: hidden;
+}
+
+.imgContainer:hover input {
+  visibility: visible;
+}
+.noSelect {
+  user-select: none;
+}
+
+/* predictive text */
+*:focus .predictiveText {
+  display: block;
+}
+.predictiveText {
+  position: absolute;
+  padding: 0;
+  display: none;
+  background-color: #615b5b;
+  color: white;
+  list-style: none;
+  user-select: none;
+  overflow-y: scroll;
+  max-height: 150px;
+  z-index: 100;
+  width: 200px;
+}
+/*END:::::::: predictive text Style */
+
+/* contextMenu Style */
+.contextMenu {
+  background-color: #615b5b;
+  color: white;
+  position: absolute;
+  width: 275px;
+  border: solid;
+  max-height: 500px;
+  border-color: #aba3a326;
+  border-radius: 5px;
+}
+.contextMenuHeader {
+  text-align: right;
+  padding-bottom: 5px;
+}
+.contextMenuBody ul {
+  border-top: solid;
+  border-color: white;
+  border-width: thin;
+  list-style: none;
+  margin: 0;
+  padding-left: 20px;
+}
+.contextMenuBody * {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 5px;
+}
+.contextMenuBody ul > li:hover {
+  background-color: white;
+  color: black;
+  border: solid;
+  border-width: thin;
+  border-color: rgb(80, 83, 100);
+}
+.subMenu > * {
+  background-color: #615b5b;
+  color: white;
+  right: -200px;
+  top: 35px;
+  width: 275px;
+  display: none;
+  list-style: none;
+  position: absolute;
+}
+.subMenu:hover > * {
+  display: block;
+}
+/*END:::::::: contextMenu Style */
+
+/* Dev Tool Styles */
+.actionButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline;
+}
+.actionButton div {
+  visibility: hidden;
+}
+*:hover > .actionButton div {
+  visibility: visible;
+}
+
+*:hover > .action_dropdown {
+  visibility: visible;
+}
+.action_dropdown {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+}
+
+*:hover > .component_dropdown {
+  visibility: visible;
+}
+.component_dropdown {
+  visibility: hidden;
+}
+*:hover > .location_personnel_dropdown {
+  visibility: visible;
+}
+.location_personnel_dropdown {
+  visibility: hidden;
+}
+/*END:::::::: Dev Tool Styles */
+
+/* Tool tip style */
+.tt:hover .tooltiptext {
+  visibility: visible;
+}
+/*END:::::::: Tool tip style */
+
+.rel {
+  position: relative;
+}
+.blue {
+  background-color: #1d4e9a !important;
+}
+.blueLight {
+  background-color: #7facf1 !important;
+}
+.blueLightLight {
+  background-color: #adc8f1 !important;
+}
+.green {
+  background-color: #89d50f !important;
+}
+.greenLight {
+  background-color: rgb(202, 227, 163) !important;
+}
+.blueBar {
+  background-color: #1d4e9a !important;
+  height: 52px;
+}
+.sign_title {
+  color: white;
+}
+
+background-color: rgba(202, 227, 163, 0.49);
+
+.slidecontainer {
+  width: 100%;
+}
+.slidecontainer:hover .slider {
+  visibility: visible;
+}
+
+.slider {
+  visibility: hidden;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4caf50;
+  cursor: pointer;
+}
+.blue {
+  background-color: #1d4e9a;
+}
