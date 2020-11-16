@@ -115,14 +115,25 @@ class BoardData {
   }
 }
 class Piece {
-  constructor(color) {
+  // f, move forward 1 space,
+  // b, move back 1 space,
+  // l, move left 1 space,
+  // r, move right 1 space,
+  // s, save current loaction,
+  // *, use save loaction is now current location,
+  // prefix: c, continues movement.
+  // postfix <, repete last movment.
+  // () group as one step
+
+  constructor(color = 'white', type = 'pawn') {
     this.color = color;
     this.x = 0;
     this.y = 0;
     this.ox = 1;
     this.oy = 1;
-    this.moves = [];
-    this.attacks = [];
+    this.type = type;
+    this.moves = `cfsf*l*r`;
+    this.attacks = `fl,fr`;
   }
   move(x, y) {
     this.x = x;
@@ -132,23 +143,10 @@ class Piece {
     return this.location.x.toString() + ',' + this.location.y.toString();
   }
 }
-class Pawn extends Piece {
-  constructor(color = 'white') {
-    super(color);
-    this.type = 'pawn';
-    this.moves = `cfsf*l*r`;
-    this.attacks = `fl,fr`;
-    // this.element = document.createElement('div');
-    // this.element.classList.add(this.type);
-    // let board = document.getElementsByClassName('board')[0];
-    // board.append(this.element);
-  }
-}
 
 module.exports = {
   Player: Player,
   LocationData: LocationData,
   BoardData: BoardData,
   Piece: Piece,
-  Pawn: Pawn,
 };

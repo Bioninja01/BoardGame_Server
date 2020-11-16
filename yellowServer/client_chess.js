@@ -18,9 +18,7 @@ class Client extends net.Socket {
       this.write('Hello, server!  Love, Client.');
     });
     this.on('data', (data) => {
-      console.log('serverData:');
-      var buf = Buffer.from(data);
-      console.log(buf.toString());
+      console.log('serverData:old Data');
     });
   }
   disconect() {
@@ -43,8 +41,16 @@ function speak() {
 }
 
 let client = new Client();
-// client.join();
-speak();
+client.join();
+
+client.removeAllListeners('data');
+client.on('data', (data) => {
+  console.log('serverData:');
+  var buf = Buffer.from(data);
+  let obj = JSON.parse(buf.toString());
+  console.log(obj);
+});
+// speak();
 
 function generate_message(string) {
   let obj = JSON.parse(string);
