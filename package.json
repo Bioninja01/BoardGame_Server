@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "node ./yellowServer/server_chess.js",
     "start": "node ./LanGame/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
