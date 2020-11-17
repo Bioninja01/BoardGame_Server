@@ -13,7 +13,6 @@ class Net_Player extends Player {
     this.client.write(data);
   }
 }
-
 class ChessServer extends net.Server {
   constructor() {
     super();
@@ -92,16 +91,11 @@ class ChessServer extends net.Server {
       // socket.write('your id: ' + id);
       if (this.player1 == null) {
         this.player1 = new Net_Player(socket);
-        let data = this.new_pieces(this.player1);
+        let data = {};
+        data.message = this.new_pieces(this.player1);
+        data.header = 'setPieces';
         let data_string = JSON.stringify(data);
         socket.write(data_string);
-
-        setTimeout(function () {
-          let d = {};
-          d['test'] = 'somedata';
-          let x = JSON.stringify(d);
-          socket.write(x);
-        }, 2000);
       } else if (this.player2 == null) {
         cl;
         this.player2 = new Net_Player(socket);
@@ -113,6 +107,7 @@ class ChessServer extends net.Server {
         console.log('clientData:');
         var buf = Buffer.from(data);
         console.log(buf.toString());
+        socket.emit('test', { text: 'bob' });
       });
       socket.on('end', () => {
         console.log('client disconnected');

@@ -1,11 +1,10 @@
 const net = require('net');
-const fs = require('fs');
-let config = require('./config.js');
-const { throws } = require('assert');
+const path = require('path');
 
 class Client extends net.Socket {
   constructor() {
     super();
+    let config = require(path.resolve(__dirname, 'config.js'));
     this.port = config.port;
     this.hostname = config.hostname;
   }
@@ -14,16 +13,14 @@ class Client extends net.Socket {
       console.log('Connected');
       this.write('Hello, server!  Love, Client.');
     });
-    this.on('data', (data) => {
-      console.log('serverData:');
-      var buf = Buffer.from(data);
-      console.log(buf.toString());
-    });
   }
   disconect() {
     this.end();
   }
+  write_data(jsonData) {
+    let string = JSON.stringify(jsonData);
+    this.write(string);
+  }
 }
 
-let client = new Client();
-client.join();
+module.exports.Client = Client;
