@@ -2,9 +2,18 @@ const net = require('net');
 const path = require('path');
 const tcp = require(path.resolve(__dirname, 'client_tcp.js'));
 
-let client = new tcp.Client();
+class Chess extends tcp.Client {
+  constructor() {
+    super();
+    this.pieces = [];
+  }
+}
+
+let client = new Chess();
+
 client.on('data', (data) => {
   var buf = Buffer.from(data);
+  console.log(buf.toString());
   let obj = JSON.parse(buf.toString());
   let header = obj.header;
   let message = obj.message;
@@ -12,6 +21,7 @@ client.on('data', (data) => {
 });
 client.on('setPieces', (data) => {
   console.log('serverData:');
+  this.pieces = data;
   console.log(data);
 });
 client.on('test', (data) => {

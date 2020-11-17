@@ -97,7 +97,6 @@ class ChessServer extends net.Server {
         let data_string = JSON.stringify(data);
         socket.write(data_string);
       } else if (this.player2 == null) {
-        cl;
         this.player2 = new Net_Player(socket);
         this.new_pieces(this.player2);
         console.log(this.player2.pieces);
